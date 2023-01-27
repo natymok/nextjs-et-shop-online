@@ -109,16 +109,18 @@ function Slider({top,product}) {
           <div ref={divref} onMouseLeave={()=>{scroll(1585)}} className='flex justify-start  flex-nowrap scroll-smooth overflow-x-scroll scrollbar-none  w-[full]    gap-2  '>
   
          {product && product.map((item)=>(
-            <div  key={item._id} className='bg-white border-2 border-gray-300 flex  justify-between items-center min-w-[150px] md:min-w-[310px] max-w-[200px] md:max-w-[310px] w-[79%] md:w-[310px] rounded-sm '>
+            <div  key={item._id} className='bg-white border-2 border-gray-300 flex  justify-between items-center min-w-[150px] md:min-w-[310px] max-w-[200px] md:max-w-[310px] w-[79%] md:w-[310px] rounded-sm overflow-hidden '>
                {item.productPicture && item.productPicture.map((pic)=>(
                     
                 <div key={pic._id} className='flex flex-col justify-between w-[350px]  h-[250px] md:h-[350px] items-center p-1 md:p-3  '>
                              
                  <img  src={pic.img} className='w-[90%] md:w-[60%]'/>
-                 <p className='m-1 md:m-3 font-serif font-sm  md:font-medium'>{item.Description}</p>
+               
+                <p className='m-1 md:m-3 font-serif text-sm md:text-md font-sm  md:font-medium'>{item.Description}</p>
+               
                  <div className='flex justify-between w-full items-center'>
                   <p className=' font-thin font-serif text-sm'>BUY NOW</p>
-                  <p className='font-sm md:font-medium font-serif'>{item.price}ETB</p>
+                  <p className='font-sm text-sm md:font-medium font-serif'>{item.price}ETB</p>
                   </div>
                   <div className=' flex flex-col md:flex-row items-center w-full justify-between  '>
                    <div className='flex'>
