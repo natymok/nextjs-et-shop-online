@@ -5,8 +5,48 @@ import Bulletin from '../Bulletin/Bulletin'
 import banks  from '../../img/bank.jpg'
 import banner  from '../../img/banner.jpeg'
 import logo from '../../img/logo.webp'
-function Home() {
-    const [{product}]=useStateValue()
+import axios from 'axios'
+import { useEffect } from 'react'
+function Home({products}) {
+  const [{product,token},dispatch]=useStateValue()
+  useEffect(()=>{
+    const token= localStorage.getItem('user') !== 'undefined'? localStorage.getItem('user'):null
+
+    dispatch({
+      type:'getProduct',
+      product:products
+     })
+     dispatch({
+      type:'signin',
+       token:token
+})
+if(token){
+  axios.get('https://etshop-server.onrender.com/api/getcart',{headers:{"authorization":token?token:'',
+  "Access-Control-Allow-Origin":'*'}})
+  .then((res)=>{
+    dispatch({
+      type:'addcart',
+      cart:res.data.message[0].cartItem
+    })
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+}
+axios.get('https://etshop-server.onrender.com/api/getCatagories')
+  .then((res)=>{
+    if(res.status == '200')
+    {
+       dispatch({
+        type:'getcatagory',
+        catagory:res.data.catagories
+       })
+    }
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+  },[])
   return (
     <div className='bg-gray-200 w-full'>
          <p className='mx-auto -z-10 font-serif font-semibold'>ከ 2,500 ብር በላይ ይገብዩና እቃዎን በነፃ በ አ.አ ያሉበት ድረስ እናድርስልዎ Free delivery in A.A for purchases of ETB 2,500 and above</p>
