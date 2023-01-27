@@ -88,7 +88,7 @@ const search=()=>{
 })
   return (
     <div className='full '>
-      <nav className='bg-orange-400 w-full h-[150px]  items-center'>
+      <nav className='bg-orange-400 w-full h-[180px] md:h-[150px]   items-center'>
        <div className=' flex items-center justify-start md:justify-between  '>
        <div className='flex items-center w-full md:w-[50%]'>
         
@@ -136,7 +136,7 @@ const search=()=>{
 
      </div>
      <div   className=' md:hidden bg-orange-400 '>
-            <ul id='ul' className='hidden flex-col text-[0.rem] font-serif font-semibold'>
+            <ul id='ul' className='hidden flex-row flex-wrap gap-1 text-[0.rem] font-serif font-semibold'>
             <motion.div className='cursor-pointer' whileTap={{scale:1.2}}>
                   Home
                 </motion.div>
