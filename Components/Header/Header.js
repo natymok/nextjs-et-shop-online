@@ -147,8 +147,8 @@ const search=()=>{
                         <option key={cat._id} value={cat._id}>{cat.name}</option>
                     ))}
                 </select>
-                <Link  className='  text-[1rem]' href='/signup'>Register</Link>
-                {!token && (<Link className='  text-[1rem]' href='/signin'>Signin</Link>)}
+                <Link  className='  text-[1rem]' href='/Signup'>Register</Link>
+                {!token && (<Link className='  text-[1rem]' href='/Signin'>Signin</Link>)}
                  {token && (<button className='' onClick={signOut}>signOut</button>)}
             </ul>
         </div>
