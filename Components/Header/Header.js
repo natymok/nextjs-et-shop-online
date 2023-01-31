@@ -32,7 +32,7 @@ const searchByCatagory=(catagory)=>{
  )
  .then((res)=>{
    if(res.status == '200')
-   {   console.log(res,'resssss')
+   {  
       dispatch({
        type:'getProduct',
        product:res.data.message
